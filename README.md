@@ -1,2 +1,2 @@
 # easyocr github project link
-https://github.com/JaidedAI/EasyOCR#api-documentation
+https://github.com/JaidedAI/EasyOCR
