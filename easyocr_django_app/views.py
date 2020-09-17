@@ -3,6 +3,7 @@ from django.core.files.storage import FileSystemStorage
 
 import time
 import os
+import cv2
 
 from .easy_ocr import ocr_image
 from easyocr_django.settings import BASE_DIR
@@ -17,6 +18,11 @@ def ocr(request):
         os.mkdir(f'media/{timestamp}')
         fileSystemStorageObject = FileSystemStorage()
         filename = fileSystemStorageObject.save(f'{timestamp}/{timestamp}_{image.name}',image)
-        print('*************************', filename)
+        filename = f'media/{filename}'
+        # print('*************************', media_path+filename)
+        image, text = ocr_image(filename)
+        cv2.imwrite(f'media/{timestamp}/{timestamp}_OCRed.jpg',image)
+        
+        print(text)
         return render(request, 'index.html')
     return render(request, 'index.html')

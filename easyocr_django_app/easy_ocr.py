@@ -20,6 +20,7 @@ def ocr_image(image_path, langs='en', gpu=-1):
     reader = Reader(langs, gpu=gpu > 0)
     results = reader.readtext(image)
 
+    all_text = ''
     # loop over the results
     for (bbox, text, prob) in results:
         # display the OCR'd text and associated probability
@@ -36,8 +37,7 @@ def ocr_image(image_path, langs='en', gpu=-1):
         cv2.rectangle(image, tl, br, (0, 255, 0), 2)
         cv2.putText(image, text, (tl[0], tl[1] - 10),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-    # show the output image
+        all_text += ' ' + text
+
     image = cv2.resize(image, (1000, 700))
-    cv2.imshow("Image", image)
-    cv2.waitKey(0)
-    return image
+    return image, all_text
