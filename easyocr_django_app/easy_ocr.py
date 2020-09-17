@@ -9,15 +9,15 @@ def cleanup_text(text):
     return "".join([c if ord(c) < 128 else "" for c in text]).strip()
 
 
-def ocr_image(image, langs='en', gpu=-1)
+def ocr_image(image_path, langs='en', gpu=-1):
     # break the input languages into a comma separated list
-    langs = args["langs"].split(",")
+    langs = langs.split(",")
     print("[INFO] OCR'ing with the following languages: {}".format(langs))
     # load the input image from disk
-    image = cv2.imread(args["image"])
+    image = cv2.imread(image_path)
     # OCR the input image using EasyOCR
     print("[INFO] OCR'ing input image...")
-    reader = Reader(langs, gpu=args["gpu"] > 0)
+    reader = Reader(langs, gpu=gpu > 0)
     results = reader.readtext(image)
 
     # loop over the results

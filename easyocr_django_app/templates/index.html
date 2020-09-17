@@ -1,0 +1,15 @@
+<html>
+
+<head>
+    <title>OCR</title>
+</head>
+
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="imagefile">
+        <input type="submit">
+    </form>
+</body>
+
+</html>
