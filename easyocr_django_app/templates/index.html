@@ -2,13 +2,30 @@
 
 <head>
     <title>OCR</title>
+    <style>
+        div {
+            /* border: 1px red solid; */
+        }
+    </style>
 </head>
 
 <body>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="file" name="imagefile">
-        <input type="submit">
+        <div>
+            <div>
+                <input type="file" name="imagefile">
+                <input type="submit" value="Submit">
+            </div>
+            <div style="display: flex;">
+                <div style="width: 700px; height: 600px;">
+                    <img src="{{image_path}}" alt="{{image_path}}" style=''>
+                </div>
+                <div>
+                    <p>{{text}}</p>
+                </div>
+            </div>
+        </div>
     </form>
 </body>
 
