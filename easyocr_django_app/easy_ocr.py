@@ -39,5 +39,8 @@ def ocr_image(image_path, langs='en', gpu=-1):
                     cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
         all_text += ' ' + text
 
-    image = cv2.resize(image, (1000, 700))
+    # resize image for UI purpose
+    h, w, _ = image.shape
+
+    # image = cv2.resize(image, (700, 700))
     return image, all_text

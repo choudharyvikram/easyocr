@@ -22,7 +22,9 @@ def ocr(request):
         # print('*************************', media_path+filename)
         image, text = ocr_image(filename)
         cv2.imwrite(f'media/{timestamp}/{timestamp}_OCRed.jpg',image)
-        
-        print(text)
-        return render(request, 'index.html')
+        with open(f'media/{timestamp}/{timestamp}_output.txt','w') as f:
+            f.write(text)
+
+        return render(request, 'index.html',{'image_path':f'media/{timestamp}/{timestamp}_OCRed.jpg',
+                                            'text':text})
     return render(request, 'index.html')

@@ -17,9 +17,10 @@
                 <input type="file" name="imagefile">
                 <input type="submit" value="Submit">
             </div>
+            <br>
             <div style="display: flex;">
-                <div style="width: 700px; height: 600px;">
-                    <img src="{{image_path}}" alt="{{image_path}}" style=''>
+                <div style="width: 700px; overflow: auto;">
+                    <img src="../{{image_path}}" alt="{{image_path}}" style=''>
                 </div>
                 <div>
                     <p>{{text}}</p>
